@@ -2,7 +2,7 @@ Requirements
 ------------
 
 * Python 2.6
-* Pthon Pip
+* Python Pip
 * Python Virtualenv
 * A WSGI server (e.g. apache + mod_wsgi)
 * rrdtool
