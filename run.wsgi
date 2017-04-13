@@ -1,7 +1,8 @@
 import sys
-sys.path.insert(0, '/opt/rrdscout')
+root=r'/usr/local/share/virtualenvs/rrdscout'
+sys.path.insert(0, root)
 
-activate_this = '/opt/virtualenvs/rrdscout/bin/activate_this.py'
+activate_this = root + '/bin/activate_this.py'
 execfile(activate_this, dict(__file__=activate_this))
 
 from app import app as application

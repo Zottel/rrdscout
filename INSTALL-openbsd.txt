@@ -1,0 +1,136 @@
+Requirements
+------------
+
+* Python 2.6
+
+pkg_add	python-2.7.12
+
+* Python Pip
+
+pkg_add py-pip
+
+* Python Virtualenv
+
+pkg_add	py-virtualenv
+
+* A WSGI server (e.g. apache + mod_wsgi)
+
+pkg_add ap2-mod_wsgi
+
+* rrdtool
+
+pkg_add rrdtool
+
+Creating a virtualenv (optional)
+--------------------------------
+
+* /usr/local/share
+* mkdir virtualenvs
+* virtualenv ./rrdscout
+* . ./rrdscout/bin/activate
+
+Install required Python modules
+--------------------------------
+
+* pip install -r requirements.txt
+
+
+Create user / group (optional)
+------------------------------
+
+* useradd rrdscout
+
+
+Generate SSL certificate (optional)
+-----------------------------------------------
+
+* openssl req -x509 -nodes -days 365 -newkey rsa:1024 -keyout /etc/ssl/certs/rrdscout.key -out /etc/ssl/certs/rrdscout.crt.pem
+
+Setup up WSGI server
+--------------------
+
+Gunicorn and optional Nginx
+---------------------------
+
+* pip install gunicorn
+* cd rrdscout
+* gunicorn -w 4 -D –bind unix:/tmp/gunicorn.sock app:app
+* Nginx config
+
+server {
+  location / {
+    proxy_pass unix:/tmp/gunicorn.sock;
+  }
+}
+
+Apache 2.4 with mod_wsgi
+------------------------
+
+Check paths and optional user / ssl config settings.
+
+Using a VirtualHost is not required, you can use a Directory as well.
+
+<VirtualHost *:80>
+   RedirectMatch ^/(.*)$ https://$SERVER_HOST/$1
+</VirtualHost>
+
+<VirtualHost *:443>
+    ServerName rrdscout
+
+    WSGIDaemonProcess rrdscout user=rrdscout group=rrdscout threads=5
+    WSGIScriptAlias / /usr/local/share/virtualenvs/rrdscout/run.wsgi
+
+    <Location />
+        AuthType basic
+        AuthBasicProvider file
+        AuthUserFile /etc/httpd/rrdscout.pass
+        AuthName "Secure access to rrdscout"
+        Require valid-user
+    </Location>
+
+    SSLEngine on
+    SSLCertificateFile /etc/ssl/certs/rrdscout.crt.pem
+    SSLCertificateKeyFile /etc/ssl/certs/rrdscout.key
+
+    <Directory /usr/local/share/virtualenvs/rrdscout/>
+        <Files "run.wsgi">
+            Require all granted
+        </Files>
+
+        WSGIProcessGroup rrdscout
+        WSGIApplicationGroup %{GLOBAL}
+    </Directory>
+
+</VirtualHost>
+
+- Application files
+
+Copy everything under app directory to the directory where you defined the virtualenv.
+
+Edit the file app/default_settings.py, setting the COLLECTD_DIR variable to the complete path
+to the location of the RRD files (not including the hostname directory).
+
+- Static files*
+
+Copy them from:
+
+|-- static
+|   |-- css
+|   |   `-- style.css
+|   `-- images
+|       |-- data_source.png
+|       |-- devices.png
+|       |-- help.png
+|       |-- overview.png
+|       `-- rrdscout_logo.png
+
+to the DocumentRoot location defined on the httpd.conf file.
+
+* This shouldn't be necessary, but the templates are hardcoding the location of static files.
+
+
+* Check paths in run.wsgi, comment out activate_this lines if you dont use
+a virtualenv and change the SECRET_KEY eg.
+>>> import os
+>>> os.urandom(24)
+
