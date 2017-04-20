@@ -9,7 +9,8 @@ from rrd_utils import *
 import settings
 
 from flask import render_template, send_file, abort, request, session
-from flask.ext.babel import Babel, gettext
+# ExtDeprecationWarning: Importing flask.ext.babel is deprecated, use flask_babel instead.
+from flask.babel import Babel, gettext
 from werkzeug.routing import BaseConverter
 
 import os
