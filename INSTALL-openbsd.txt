@@ -1,7 +1,7 @@
 Requirements
 ------------
 
-* Python 2.6
+* Python 2.X (2.6 or higher)
 
 pkg_add	python-2.7.12
 
@@ -68,7 +68,7 @@ Apache 2.4 with mod_wsgi
 
 Check paths and optional user / ssl config settings.
 
-Using a VirtualHost is not required, you can use a Directory as well.
+Using a VirtualHost:
 
 <VirtualHost *:80>
    RedirectMatch ^/(.*)$ https://$SERVER_HOST/$1
@@ -77,6 +77,7 @@ Using a VirtualHost is not required, you can use a Directory as well.
 <VirtualHost *:443>
     ServerName rrdscout
 
+    LoadModule wsgi_module /usr/local/lib/apache2/mod_wsgi.so
     WSGIDaemonProcess rrdscout user=rrdscout group=rrdscout threads=5
     WSGIScriptAlias / /usr/local/share/virtualenvs/rrdscout/run.wsgi
 
@@ -102,6 +103,21 @@ Using a VirtualHost is not required, you can use a Directory as well.
     </Directory>
 
 </VirtualHost>
+
+For more simple cases, the configuration below should be enough:
+
+LoadModule wsgi_module /usr/local/lib/apache2/mod_wsgi.so
+WSGIDaemonProcess rrdscout user=rrdscout group=rrdscout threads=5
+WSGIScriptAlias / /usr/local/share/virtualenvs/rrdscout/run.wsgi
+
+<Directory /usr/local/share/virtualenvs/rrdscout/>
+  <Files "run.wsgi">
+    Require all granted
+  </Files>
+
+  WSGIProcessGroup rrdscout
+  WSGIApplicationGroup %{GLOBAL}
+</Directory>
 
 - Application files
 
