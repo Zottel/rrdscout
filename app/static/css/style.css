@@ -282,7 +282,7 @@ h {
 #footer {
     position: relative;
     bottom: 0px;
-    padding-top:95px;
+    margin-top:95px;
     width:95%;
     color: #666;
     font-size: 8pt;

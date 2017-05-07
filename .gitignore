@@ -1,5 +1,10 @@
 *.pyc
 *~
-#*
+*.swp
+*.swo
 app/settings.py
 app/static/css/custom.css
+bin
+include
+lib
+lib64
