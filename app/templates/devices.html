@@ -13,7 +13,7 @@
     {% for device in devices %}
     <a href="{{url_for('device', graph_device=device)}}">
       <li>
-	<img src="/static/images/devices.png"/> {{device}}
+	<img class="icon" src="/static/images/laptop.svg"/> {{device}}
       </li>
     </a>
     {% endfor %}

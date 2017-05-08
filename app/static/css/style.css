@@ -90,7 +90,8 @@ body > header {
                     -1px 1px 0 rgba(0,0,0, 0.8);
 }
 
-#navigation li a img {
+#navigation li a img,
+img.icon {
     width: 32px;
     filter: invert(100%);
 }
@@ -105,7 +106,8 @@ body > header {
     text-shadow: none;
 }
 
-#navigation li:hover a img {
+#navigation li:hover a img,
+#device_list li:hover img  {
     filter: none;
 }
 
@@ -211,6 +213,7 @@ input:focus {
 
 #device_list li:hover {
     background: #ddd;
+    color: rgba(0,0,0, 0.8);
 }
 
 #graphdetail_timeform {
