@@ -13,6 +13,8 @@ LANGUAGES = {
 # The name of our page
 PAGE_NAME="My page name"
 
+GRAPH_FORMAT='png'
+
 # Width / heights of normal and thumbnail graph
 GRAPH_WIDTH=1172
 GRAPH_HEIGHT=355

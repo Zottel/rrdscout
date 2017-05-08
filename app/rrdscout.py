@@ -4,7 +4,7 @@ from misc_utils import *
 from time import time
 from pyrrd.graph import DEF, CDEF, ColorAttributes, LINE, AREA, GPRINT, VariableDefinition, GraphComment
 from pyrrd.graph import Graph as PyrrdGraph
-from flask.ext.babel import gettext
+from flask_babel import gettext
 import tempfile
 import settings
 from pipes import quote
@@ -44,7 +44,7 @@ class Graph(object):
         self.attachment_name = ""
         self.comment = comment
         self.add_comment = add_comment
-        self.out_file = tempfile.NamedTemporaryFile('rw', suffix='.png', dir=settings.TEMP_DIR, delete=True)
+        self.out_file = tempfile.NamedTemporaryFile('rw', suffix='.%s' % settings.GRAPH_FORMAT, dir=settings.TEMP_DIR, delete=True)
 
         self._defs = []
         self._cdefs = []
@@ -406,7 +406,7 @@ class Graph(object):
         self._generate_lines()
         self._generate_title()
         self._generate_y_axis_label()
-        self.generate_attachment_name()
+        self.generate_attachment_name(suffix=settings.GRAPH_FORMAT)
 
         self.graph.title = self.title
 
