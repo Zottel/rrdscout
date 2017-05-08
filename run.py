@@ -9,14 +9,16 @@ app.config['SECRET_KEY'] = 'F34TF$($e34D'
 #app.config['PROFILE'] = True
 #app.wsgi_app = ProfilerMiddleware(app.wsgi_app)
 
-debug = True
-host = "127.0.0.1"
-port = 5000
+if __name__ == '__main__':
 
-if len(sys.argv) == 2:
-    host = sys.argv[1]
-elif len(sys.argv) == 3:
-    host = sys.argv[1]
-    port = int(sys.argv[2])
+    debug = True
+    host = "127.0.0.1"
+    port = 5000
 
-app.run(debug=debug, host=host, port=port)
+    if len(sys.argv) == 2:
+        host = sys.argv[1]
+    elif len(sys.argv) == 3:
+        host = sys.argv[1]
+        port = int(sys.argv[2])
+
+    app.run(debug=debug, host=host, port=port)
