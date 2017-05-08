@@ -12,13 +12,13 @@ body {
 
 ul { margin: 0px; padding: 0px; list-style: disc outside; }
 
-header {
+body > header {
     padding-top: 10px;
     position: sticky;
     top: 0;
     height: 150px;
     box-sizing: border-box;
-    background: rgba(0,0,0, 0.4);
+    background: rgba(15,15,15, 0.4);
     border-bottom: 1px solid rgba(255,255,255, 0.8);
     z-index: 9001;
 }
@@ -77,13 +77,22 @@ header {
 
 
 #navigation li a {
-  font-weight: bold;
-  font-size:13px;
-  color: rgba(255,255,255, 0.8);
-  display:block;
-  outline:0;
-  text-decoration:none;
-  padding: 5px;
+    font-weight: bold;
+    font-size:13px;
+    color: rgba(255,255,255, 0.8);
+    display:block;
+    outline:0;
+    text-decoration:none;
+    padding: 5px;
+    text-shadow:    -1px -1px 0 rgba(0,0,0, 0.8),
+                    -1px 1px 0 rgba(0,0,0, 0.8),
+                    1px 1px 0 rgba(0,0,0, 0.8),
+                    -1px 1px 0 rgba(0,0,0, 0.8);
+}
+
+#navigation li a img {
+    width: 32px;
+    filter: invert(100%);
 }
 
 #navigation li:hover {
@@ -93,6 +102,11 @@ header {
 #navigation li:hover a {
     background: rgba(255,255,255, 0.8);
     color: rgba(0,0,0, 0.8);
+    text-shadow: none;
+}
+
+#navigation li:hover a img {
+    filter: none;
 }
 
 .icontext {
@@ -131,7 +145,7 @@ header {
 .graph {
   vertical-align: top;
   padding: 10px;
-  width: 100%; /* scales graphs to td width */
+  max-width: 100%; /* scales graphs to td width */
   box-sizing: border-box; /* means padding is included in 100% width */
 }
 
@@ -151,11 +165,16 @@ h3.plugin-name {
 
     box-sizing: border-box;
     width: 100%;
+    margin-top: 0;
     padding-left: 10px;
     background: rgba(0,0,0, 0.9);
     color: rgba(255,255,255, 0.8);
     line-height: 3;
     border-bottom: 2px solid rgb(255,255,255);
+}
+
+hr {
+    margin-bottom: 0;
 }
 
 

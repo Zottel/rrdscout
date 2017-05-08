@@ -19,16 +19,16 @@
             <nav id="navigationbar">
               <ul id="navigation">
             <li>
-              <a href="{{url_for('index')}}"><img src="/static/images/overview.png"/> {{ _('Overview') }}</a>
+              <a href="{{url_for('index')}}"><img src="/static/images/eye.svg"/> {{ _('Overview') }}</a>
             </li>
             <li>
-              <a href="{{url_for('devices')}}"><img src="/static/images/devices.png"/> {{ _('Devices') }}</a>
+              <a href="{{url_for('devices')}}"><img src="/static/images/cloud.svg"/> {{ _('Devices') }}</a>
             </li>
             <li>
-              <a href="{{url_for('datasources')}}"><img src="/static/images/data_source.png"/> {{ _('Data Sources') }}</a>
+              <a href="{{url_for('datasources')}}"><img src="/static/images/database.svg"/> {{ _('Data Sources') }}</a>
             </li>
             <li>
-              <a href="{{help_link}}"><img src="/static/images/help.png"/> {{ _('Get help') }}</a>
+              <a href="{{help_link}}"><img src="/static/images/help-with-circle.svg"/> {{ _('Get help') }}</a>
             </li>
               </ul>
             </nav>
@@ -40,7 +40,7 @@
     </section>
 
     <footer id="footer">
-      &copy ETH Zurich | <a href="{{url_for('disclaimer')}}">{{ _('Disclaimer') }}</a> | {{current_date}} | Icons from <a href="http://www.iconarchive.com/">IconArchive</a>
+      &copy; Eris Discordia | <a href="{{url_for('disclaimer')}}">{{ _('Disclaimer') }}</a> | {{current_date}} | Icons from <a href="http://www.entypo.com/">Entypo+</a>
     </footer>
   </body>
 </html>
