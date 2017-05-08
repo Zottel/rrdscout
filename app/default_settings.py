@@ -22,8 +22,16 @@ GRAPH_THUMB_WIDTH=300
 GRAPH_THUMB_HEIGHT=150
 
 # Colors of graph area and lines
-COLOR_AREA_MIN="#FFFFFF"
-COLOR_AREA_MAX="#f4bf9c"
+COLOR_BACK="#00000000" # main background of graphs
+COLOR_CANVAS="#000000AA" # background of just the graph (without axis, labels, etc)
+COLOR_SHADEA="#00000000" # border left/top
+COLOR_SHADEB="#00000000" # border right/bottom
+COLOR_FONT="#FEFEFE"
+COLOR_ARROW="#FF000088"
+COLOR_AXIS="#FF000088"
+COLOR_MGRID="#FFFFFFAA"
+COLOR_AREA_MIN="#0066AA66"
+COLOR_AREA_MAX="#77110088"
 COLOR_LINES = [ '#ff8442', '#800000', '#008B8B', '#DEB887', '#5F9EA0', '#D2691E',
                 '#FF7F50', '#6495ED', '#DC143C', '#0000FF', '#9ACD32', '#EE82EE',
                 '#A9A9A9', '#006400', '#BDB76B', '#8B008B', '#556B2F', '#FF8C00',

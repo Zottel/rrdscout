@@ -8,25 +8,32 @@
     <title>rrdscout</title>
   </head>
   <body>
-    <div id="page_name">.:: {{page_name}}</div>
-    <div id="logo"><a href="{{logo_link}}"><img src="/static/images/{{logo_image}}"/></a></div>
 
-    <nav id="navigationbar">
-      <ul id="navigation">
-	<li>
-	  <a href="{{url_for('index')}}"><img src="/static/images/overview.png"/> {{ _('Overview') }}</a>
-	</li>
-	<li>
-	  <a href="{{url_for('devices')}}"><img src="/static/images/devices.png"/> {{ _('Devices') }}</a>
-	</li>
-	<li>
-	  <a href="{{url_for('datasources')}}"><img src="/static/images/data_source.png"/> {{ _('Data Sources') }}</a>
-	</li>
-	<li>
-	  <a href="{{help_link}}"><img src="/static/images/help.png"/> {{ _('Get help') }}</a>
-	</li>
-      </ul>
-    </nav>
+    <header>
+        <div class="header-row">
+            <div id="page_name">.:: {{page_name}}</div>
+            <div id="logo"><a href="{{logo_link}}">&nbsp;</a></div>
+        </div>
+
+        <div class="header-row">
+
+        <nav id="navigationbar">
+          <ul id="navigation">
+        <li>
+          <a href="{{url_for('index')}}"><img src="/static/images/overview.png"/> {{ _('Overview') }}</a>
+        </li>
+        <li>
+          <a href="{{url_for('devices')}}"><img src="/static/images/devices.png"/> {{ _('Devices') }}</a>
+        </li>
+        <li>
+          <a href="{{url_for('datasources')}}"><img src="/static/images/data_source.png"/> {{ _('Data Sources') }}</a>
+        </li>
+        <li>
+          <a href="{{help_link}}"><img src="/static/images/help.png"/> {{ _('Get help') }}</a>
+        </li>
+          </ul>
+        </nav>
+    </header>
 
     <section id="content">
       {% block content %}{% endblock %}

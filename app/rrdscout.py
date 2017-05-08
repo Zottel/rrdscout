@@ -62,9 +62,14 @@ class Graph(object):
                        'average': 'AVERAGE'}
 
         graph_color = ColorAttributes()
-        graph_color.back = '#ffffff'
-        graph_color.shadea = '#ffffff'
-        graph_color.shadeb = '#ffffff'
+        graph_color.back = settings.COLOR_BACK
+        graph_color.canvas = settings.COLOR_CANVAS
+        graph_color.font = settings.COLOR_FONT
+        graph_color.shadea = settings.COLOR_SHADEA
+        graph_color.shadeb = settings.COLOR_SHADEB
+        graph_color.mgrid = settings.COLOR_MGRID
+        graph_color.axis = settings.COLOR_AXIS
+        graph_color.arrow = settings.COLOR_ARROW
 
         self.graph = PyrrdGraph(self.out_file.name,
                                 start=self.time_from,
