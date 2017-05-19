@@ -201,7 +201,7 @@ def export_data(graph_device, graph_plugin, graph_type, time_from, time_to, form
     return send_file(out_file,
                      attachment_filename=generate_attachment_name(graph_device, graph_plugin, graph_type, format.lower()),
                      as_attachment=True,
-                     cache_timeout=1)
+                     cache_timeout=300)
 
 
 
@@ -313,7 +313,7 @@ def graph(graph_devices, graph_plugin, graph_type, time_from, time_to, graph_com
     return send_file(graph.out_file,
                      attachment_filename=graph.attachment_name,
                      as_attachment=True,
-                     cache_timeout=1)
+                     cache_timeout=300)
 
 
 @app.route('/graphthumb/<regex("[a-zA-Z0-9,\-\.]+"):graph_devices>/<graph_plugin>/<graph_type>/<int:time_from>/<int:time_to>', methods = ['GET'])
